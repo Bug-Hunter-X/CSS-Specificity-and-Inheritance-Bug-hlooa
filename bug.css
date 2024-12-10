@@ -1,0 +1,22 @@
+The following CSS code snippet suffers from a subtle error related to specificity and inheritance: 
+
+```css
+div {
+  font-size: 16px;
+}
+
+.special-div p {
+  font-size: 14px;
+}
+
+.special-div span {
+  font-size: 12px;
+}
+
+.special-div span.highlight {
+  font-size: 18px; /*This declaration will be overridden*/
+  color: blue;
+}
+```
+
+The `span.highlight` selector is more specific than the `span` selector within the `.special-div` class. However, the browser might not render the `font-size: 18px` in this specific scenario. This is because of how inheritance works in CSS; the initial value set in the `div` selector might unexpectedly influence the final result. 
